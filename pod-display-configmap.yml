@@ -15,3 +15,10 @@ data:
       <h1>Hello, World! This is pod with UID: {{ .PodUID }}</h1>
     </body>
     </html>
+  pod-uid-values.yaml: |
+    - path: /pod1
+      uid: "1"
+    - path: /pod2
+      uid: "2"
+    - path: /pod3
+      uid: "3"

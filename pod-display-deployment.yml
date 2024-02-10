@@ -23,7 +23,8 @@ spec:
         - name: html-volume
           mountPath: /usr/share/nginx/html
           readOnly: true
-      volumes:
-      - name: html-volume
-        configMap:
-          name: pod-display-configmap
+        env:
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.uid
