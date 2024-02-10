@@ -8,7 +8,7 @@ spec:
   selector:
     app: pod-display
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-  type: NodePort
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer  # Change the service type to LoadBalancer
