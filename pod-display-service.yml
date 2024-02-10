@@ -1,0 +1,14 @@
+# pod-display-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pod-display-service
+spec:
+  selector:
+    app: pod-display
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: NodePort

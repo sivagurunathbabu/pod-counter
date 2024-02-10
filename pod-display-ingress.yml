@@ -21,20 +21,20 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: pod-display-deployment
+            name: pod-display-service
             port:
               number: 80
       - path: /pod2
         pathType: Prefix
         backend:
           service:
-            name: pod-display-deployment
+            name: pod-display-service
             port:
               number: 80
       - path: /pod3
         pathType: Prefix
         backend:
           service:
-            name: pod-display-deployment
+            name: pod-display-service
             port:
               number: 80
