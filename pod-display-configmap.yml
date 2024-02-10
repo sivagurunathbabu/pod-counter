@@ -1,0 +1,17 @@
+# pod-display-configmap.yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pod-display-configmap
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Hello, Pod!</title>
+    </head>
+    <body>
+      <h1>Hello, World! This is pod with UID: {{ .PodUID }}</h1>
+    </body>
+    </html>

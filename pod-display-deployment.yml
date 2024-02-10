@@ -19,8 +19,11 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
-        env:
-        - name: POD_NUMBER
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.uid
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html
+          readOnly: true
+      volumes:
+      - name: html-volume
+        configMap:
+          name: pod-display-configmap
