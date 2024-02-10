@@ -6,12 +6,6 @@ metadata:
   name: pod-display-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      set $pod_uid_value "";
-      if ($request_uri ~ "/pod1") { set $pod_uid_value "1"; }
-      if ($request_uri ~ "/pod2") { set $pod_uid_value "2"; }
-      if ($request_uri ~ "/pod3") { set $pod_uid_value "3"; }
-      proxy_set_header POD_UID $pod_uid_value;
 spec:
   rules:
   - host: ip-172-31-40-97
@@ -24,6 +18,9 @@ spec:
             name: pod-display-deployment
             port:
               number: 80
+        annotations:
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header POD_UID "1";
       - path: /pod2
         pathType: Prefix
         backend:
@@ -31,6 +28,9 @@ spec:
             name: pod-display-deployment
             port:
               number: 80
+        annotations:
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header POD_UID "2";
       - path: /pod3
         pathType: Prefix
         backend:
@@ -38,3 +38,6 @@ spec:
             name: pod-display-deployment
             port:
               number: 80
+        annotations:
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header POD_UID "3";
