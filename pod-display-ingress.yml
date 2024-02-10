@@ -4,16 +4,18 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: pod-display-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: your-ingress-host.com
+  - host: ip-172-31-40-97
     http:
       paths:
       - path: /pod1
         pathType: Prefix
         backend:
           service:
-            name: pod-display-service
+            name: pod-display-deployment
             port:
               number: 80
         value: POD_UID=1
@@ -21,7 +23,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: pod-display-service
+            name: pod-display-deployment
             port:
               number: 80
         value: POD_UID=2
@@ -29,7 +31,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: pod-display-service
+            name: pod-display-deployment
             port:
               number: 80
         value: POD_UID=3
