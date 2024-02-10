@@ -5,10 +5,13 @@ kind: ConfigMap
 metadata:
   name: pod-display-configmap
 data:
-  pod-uid-values.yaml: |
-    - path: /pod1
-      uid: "1"
-    - path: /pod2
-      uid: "2"
-    - path: /pod3
-      uid: "3"
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Hello, Pod!</title>
+    </head>
+    <body>
+      <h1>Hello, World! This is pod with UID: {{ .PodUID }}</h1>
+    </body>
+    </html>
