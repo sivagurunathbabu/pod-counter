@@ -1,0 +1,26 @@
+# pod-display-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-display-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pod-display
+  template:
+    metadata:
+      labels:
+        app: pod-display
+    spec:
+      containers:
+      - name: pod-display-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: POD_NUMBER
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.uid
